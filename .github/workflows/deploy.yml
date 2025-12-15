@@ -16,10 +16,11 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
             # 1. Đi tới thư mục project (nhớ tạo folder này trước trên server)
+            mkdir /var/www/thevan.id.vn
             cd /var/www/thevan.id.vn
             
             # 2. Lấy code mới nhất về
