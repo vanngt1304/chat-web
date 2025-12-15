@@ -61,7 +61,7 @@ jobs:
             docker pull $IMAGE_LOWER:latest
             
             # Chạy container mới
-            sudo docker run -d \
+            docker run -d \
               --name chat-app \
               --restart unless-stopped \
               -p 5000:5000 \
