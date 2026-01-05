@@ -36,14 +36,18 @@ jobs:
           context: .
           push: true
           tags: ${{ env.IMAGE_NAME }}:latest
+      - name: Deploy to Ngrok
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.HOST }}
+          host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
           script: |
             echo "Bắt đầu deploy..."
             # Lấy lại tên image chữ thường trong môi trường server
