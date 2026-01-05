@@ -41,12 +41,10 @@ jobs:
           push: true
           tags: ${{ env.IMAGE_NAME }}:latest
 
-      # 3. SSH vào Server GCP để chạy container mới
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SERVER_IP }}
-          host_port: ${{ secrets.HOST }}
+          host: ${ secrets.HOST}}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${ secrets.PORT }}
